@@ -15,6 +15,7 @@ class tttgame {
     // initialize player to go first
     static String turn = human;
 
+    // outputs the boad to terminal
     static void printBoard(String board[][]) {
         for (int j = 0; j < 3; j++) {
             for (int i = 0; i < 3; i++) {
@@ -24,6 +25,8 @@ class tttgame {
         }
     }
 
+    // checks to see if there are any move left
+    // returns true or false
     static Boolean movesLeft(String board[][]) {
         for (int j = 0; j < 3; j++) {
             for (int i = 0; i < 3; i++) {
@@ -99,6 +102,8 @@ class tttgame {
         return 0;
     }
 
+    //looks for the best move for a minimizing or maximizing player
+    //returns value of the move
     static int minimax(String board[][], int depth, Boolean isMax) {
         int score = checkWin(board);
 
@@ -157,7 +162,7 @@ class tttgame {
     }
 
     // runs the minimax function
-    // return the best possible move for the ai
+    // return Move coordinates for the ai's best move
     static Move findBestMove(String board[][]) {
         int bestVal = -1000;
         Move bestMove = new Move();
@@ -195,6 +200,7 @@ class tttgame {
         return bestMove;
     }
 
+    // changes the players turn
     static void nextTurn() {
         if (turn == human) {
             turn = ai;
@@ -203,6 +209,8 @@ class tttgame {
         }
     }
 
+    // converts user input to a move on the board
+    // returns a Move coordinates 
     static Move intToMove(int user) {
         Move userMove = new Move();
         if (user == 1) {
